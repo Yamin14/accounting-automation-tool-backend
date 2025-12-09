@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors({
     // origin: true,
-    origin: 'https://accounting-automation-tool.vercel.app/',
+    origin: 'https://accounting-automation-tool.vercel.app',
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
