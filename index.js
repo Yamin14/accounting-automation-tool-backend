@@ -3,7 +3,7 @@ const cors = require("cors");
 const connectDb = require('./config/db');
 const cookieParser = require('cookie-parser');;
 
-const { initialSetup } = require('./controllers/initialSetupController');
+const initialSetup = require('./routes/initialSetupRoute');
 const accountRoutes = require("./routes/accountRoutes");
 const companyRoutes = require("./routes/companyRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 //routes
-app.get("/api/", authMiddleware, isApprovedMiddleware, initialSetup);
+app.use("/api", authMiddleware, isApprovedMiddleware, initialSetup);
 app.use("/api/companies/:companyId/accounts", authMiddleware, isApprovedMiddleware, accountRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
